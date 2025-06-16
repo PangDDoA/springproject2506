@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>상품 목록</title>
+</head>
+<body>
+<h2>등록된 상품 목록</h2>
+
+<a th:href="@{/admin/items/new}">+ 상품 등록</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>상품명</th>
+        <th>가격</th>
+        <th>재고</th>
+        <th>상태</th>
+        <th>수정</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.itemNo}"></td>
+        <td th:text="${item.itemName}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.inventory}"></td>
+        <td th:text="${item.displayStatus}"></td>
+        <td>
+            <a th:href="@{'/admin/items/edit/' + ${item.itemNo}}">수정</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

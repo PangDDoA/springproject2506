@@ -3,10 +3,12 @@ package org.example.springproject_2506.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "items")  // 실제 DB 테이블명
 public class Item {
