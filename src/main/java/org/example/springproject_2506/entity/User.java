@@ -25,9 +25,9 @@ public class User {
     @Size(min = 10, max = 20)
     private String userId;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 100, nullable = false)
     @NotBlank
-    @Size(min = 8, max = 20)
+    @Size(min = 8, max = 100)
     private String password;
 
     @Column(nullable = false)
