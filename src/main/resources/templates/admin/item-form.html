@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>상품 등록/수정</title>
+</head>
+<body>
+<h2 th:text="${item.itemNo == null} ? '상품 등록' : '상품 수정'"></h2>
+
+<form th:action="@{${item.itemNo == null} ? '/admin/items' : '/admin/items/' + ${item.itemNo}}"
+      th:object="${item}"
+      method="post">
+  <div>
+    <label>상품명</label>
+    <input type="text" th:field="*{itemName}" required />
+  </div>
+
+  <div>
+    <label>가격</label>
+    <input type="number" th:field="*{price}" min="0" required />
+  </div>
+
+  <div>
+    <label>재고</label>
+    <input type="number" th:field="*{inventory}" min="0" required />
+  </div>
+
+  <div>
+    <label>설명</label>
+    <textarea th:field="*{info}" rows="5" cols="50"></textarea>
+  </div>
+
+  <div>
+    <label>상태</label>
+    <select th:field="*{displayStatus}">
+      <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}"></option>
+    </select>
+  </div>
+
+  <div>
+    <button type="submit" th:text="${item.itemNo == null} ? '등록' : '수정'"></button>
+  </div>
+</form>
+
+<a th:href="@{/admin/items}">목록으로</a>
+</body>
+</html>
